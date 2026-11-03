@@ -2,7 +2,7 @@
 
 A full-stack online cosmetics store built with React, Node.js, Express, and MongoDB.
 
-The website allows customers to browse skincare products, add items to their cart, choose a shipping method, and place orders. Product information is retrieved from MongoDB, and completed orders are saved through the backend API.
+The application allows customers to browse skincare products, manage their shopping cart, choose a shipping method, and place orders. Product information is retrieved from MongoDB, and orders are stored through a REST API.
 
 ## Features
 
@@ -10,6 +10,7 @@ The website allows customers to browse skincare products, add items to their car
 - Display products retrieved from MongoDB.
 - Reusable React components for product cards.
 - Loading and error handling when fetching products.
+- Product images stored locally in the frontend.
 
 ### Shopping Cart
 - Add and remove products.
@@ -43,6 +44,8 @@ The website allows customers to browse skincare products, add items to their car
 Online-Store/
 ├── Client/
 │   ├── public/
+│   │   └── images/
+│   │       └── products/
 │   ├── src/
 │   │   ├── App.js
 │   │   ├── Cart.js
@@ -58,6 +61,8 @@ Online-Store/
 │   │   └── orders.js
 │   ├── server.js
 │   └── package.json
+├── screenshots/
+├── products.json
 └── README.md
 ```
 
@@ -65,48 +70,90 @@ Online-Store/
 
 | Method | Endpoint | Description |
 |---|---|---|
-| GET | `/products` | Retrieve products from the database |
+| GET | `/products` | Retrieve all products from MongoDB |
 | POST | `/orders` | Validate and save a new order |
 | GET | `/` | Check the server response |
 
-Orders are stored in MongoDB, and successful requests return an order ID.
+A successful order submission returns HTTP status `201` and the generated order ID.
 
 ## Running the Project Locally
 
 ### Requirements
-- Node.js and npm
-- MongoDB database
 
-### 1. Clone the repository
+- Node.js and npm
+- MongoDB (local installation or MongoDB Atlas)
+- Git
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/LiorAb1/Online-Store.git
 cd Online-Store
 ```
 
-### 2. Start the backend
+### 2. Configure the Backend
+
+Open the server directory and install dependencies:
 
 ```bash
 cd Server
 npm install
 ```
 
-Create a `.env` file inside the `Server` folder:
+Create a `.env` file inside the `Server` directory:
 
 ```env
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb://127.0.0.1:27017/shop
 PORT=5000
 ```
 
-Then start the server:
+The example above uses a local MongoDB database named `shop`.
+
+If using MongoDB Atlas, replace `MONGO_URI` with your own connection string. Never commit your `.env` file or database credentials to GitHub.
+
+### 3. Import Sample Products
+
+The repository includes a `products.json` file containing nine sample products.
+
+To import the products:
+
+1. Open MongoDB Compass and connect to your MongoDB instance.
+2. Select or create a database named `shop`.
+3. Select or create a collection named `products`.
+4. Click **Add Data → Import JSON or CSV file**.
+5. Select `products.json` from the repository's root directory.
+6. Complete the import.
+
+Make sure the database name matches the database specified in `MONGO_URI`.
+
+Product images are stored in:
+
+`Client/public/images/products/`
+
+The sample product records reference these images using local paths, so no external image hosting service is required.
+
+### 4. Start the Backend
+
+Make sure MongoDB is running, then execute:
 
 ```bash
 node server.js
 ```
 
-### 3. Start the frontend
+When the database connection is successful, the terminal displays:
 
-Open another terminal:
+```text
+Connected to MongoDB
+Server running on port 5000
+```
+
+The backend runs at:
+
+`http://localhost:5000`
+
+### 5. Start the Frontend
+
+Open a second terminal from the repository's root directory:
 
 ```bash
 cd Client
@@ -114,43 +161,55 @@ npm install
 npm start
 ```
 
+The React development server normally opens at:
+
+`http://localhost:3000`
+
 The frontend is configured to communicate with the backend at `http://localhost:5000`.
+
+Keep both the frontend and backend servers running while using the application.
 
 ## How It Works
 
-The React frontend requests products from the Express server, which retrieves them from MongoDB using Mongoose.
+The React frontend sends requests to the Express backend, which retrieves product information from MongoDB using Mongoose.
 
-Customers can add products to their cart and adjust quantities. The cart is saved in localStorage.
+Customers can browse products, add them to their cart, and adjust quantities. Cart data is stored in localStorage to preserve the shopping cart between page refreshes.
 
-During checkout, the customer enters their details, selects a shipping method, and submits the order. The backend validates required information and stores the order in MongoDB.
+During checkout, customers enter their details, select a shipping method, and submit an order. The backend validates required information and saves the order in MongoDB.
 
-After a successful order, the application displays a confirmation with the order ID and clears the shopping cart.
+After successful submission, the application displays an order confirmation with the generated order ID and clears the shopping cart.
 
 ## Screenshots
 
 ### Homepage
+
 ![Homepage](screenshots/homepage.png)
 
 ### Product Catalog
+
 ![Product Catalog](screenshots/products.png)
 
 ### Shopping Cart
+
 ![Shopping Cart](screenshots/cart.png)
 
 ### Order Summary
+
 ![Order Summary](screenshots/ordersummary.png)
 
 ### Checkout
+
 ![Checkout](screenshots/checkout.png)
 
 ### Order Confirmation
+
 ![Order Confirmation](screenshots/ordersuccess.png)
 
 ## Possible Improvements
 
 - User authentication and order history.
 - Admin dashboard for product and order management.
-- Server-side validation of product prices and shipping discounts.
+- Server-side verification of product prices and shipping discounts.
 - Inventory management.
 - Online payment integration.
 - Deployment to a cloud hosting service.
