@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_URL from './api';
 import OrderSuccessModal from './OrderSuccessModal';
 import './OrderPage.css'; 
 
@@ -97,7 +98,7 @@ function OrderPage({ cartItems, clearCart }) {
 
     try {
       // Submit order to backend
-      const res = await axios.post('http://localhost:5000/orders', {
+      const res = await axios.post(`${API_URL}/orders`, {
         name: form.name,
         email: form.email,
         phone: form.phone,

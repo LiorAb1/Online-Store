@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import API_URL from './api';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import Cart from './Cart';
@@ -36,7 +37,7 @@ function App() {
 
   // Fetch products data from backend API on component mount
   useEffect(() => {
-    axios.get('http://localhost:5000/products')
+    axios.get(`${API_URL}/products`)
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
