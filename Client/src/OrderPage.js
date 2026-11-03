@@ -22,7 +22,7 @@ function OrderPage({ cartItems, clearCart }) {
   // Error and success message states
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState({});
-  const [success, setSuccess] = useState('');
+  const [, setSuccess] = useState('');
 
   // Order info states
   const [finalTotal, setFinalTotal] = useState(null);
