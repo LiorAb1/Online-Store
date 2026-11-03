@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "684814cf8b90385c1ffe5069"
+  },
+  "name": "Body Cream",
+  "description": "Rich hydration with a silky finish. Leaves skin soft and beautifully scented",
+  "price": 55,
+  "image": "/images/products/bodyCream.png"
+},
+{
+  "_id": {
+    "$oid": "684814ee8b90385c1ffe506b"
+  },
+  "name": "Luxury Bathrobe",
+  "description": "Ultra-soft and elegant. The perfect robe for relaxing in refined comfort\n",
+  "price": 90,
+  "image": "/images/products/bathrobe.png"
+},
+{
+  "_id": {
+    "$oid": "684815258b90385c1ffe506d"
+  },
+  "name": "Pampering Care Package",
+  "description": "A luxurious trio – sunscreen, body oil, and face serum for complete daily care",
+  "price": 100,
+  "image": "/images/products/package.png"
+},
+{
+  "_id": {
+    "$oid": "6848153b8b90385c1ffe506f"
+  },
+  "name": "Body Oil",
+  "description": "Fast-absorbing luxury. Deeply nourishes for a healthy, radiant glow",
+  "price": 50,
+  "image": "/images/products/bodyoil.png"
+},
+{
+  "_id": {
+    "$oid": "6848154d8b90385c1ffe5071"
+  },
+  "name": "Scented Candle",
+  "description": "Elegant design with a soft, soothing aroma. Sets the mood in style",
+  "price": 35,
+  "image": "/images/products/candle.png"
+},
+{
+  "_id": {
+    "$oid": "684815648b90385c1ffe5073"
+  },
+  "name": "Body Soap",
+  "description": "Minimalist and nourishing. Leaves your skin clean, soft, and subtly scented",
+  "price": 30,
+  "image": "/images/products/bodysoap.png"
+},
+{
+  "_id": {
+    "$oid": "6848157b8b90385c1ffe5075"
+  },
+  "name": "Face Cleanser",
+  "description": "Gentle yet effective. Refreshes and purifies for naturally radiant skin",
+  "price": 45,
+  "image": "/images/products/facecleanser.png"
+},
+{
+  "_id": {
+    "$oid": "684815998b90385c1ffe5077"
+  },
+  "name": "Sunscreen SPF 30",
+  "description": "Light texture, strong protection. Keeps your skin safe and luminous",
+  "price": 35,
+  "image": "/images/products/sunscreen.png"
+},
+{
+  "_id": {
+    "$oid": "684815b88b90385c1ffe5079"
+  },
+  "name": "Hydrating Face Cream",
+  "description": "A silky-smooth face cream that delivers intense hydration and leaves your skin radiant and soft",
+  "price": 45,
+  "image": "/images/products/facecream.png"
+}]
